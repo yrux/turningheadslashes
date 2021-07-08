@@ -212,7 +212,6 @@ window.addEventListener('fastCrudFromRendered', function (e) {
     console.log(e.detail);
     */
 });
-enableFastCrud();
 })();
 
 var enableFastCrud = ()=>{

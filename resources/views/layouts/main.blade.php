@@ -13,7 +13,7 @@
     @include('layouts.links')
     @yield('css')
   </head>
-  <body class="responsive">
+  <body class="">
     <input type="hidden" id="web_base_url" value="{{url('/')}}"/>
     @include('layouts.header')
     @yield('content')

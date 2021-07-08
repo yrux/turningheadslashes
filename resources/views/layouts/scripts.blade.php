@@ -1,10 +1,11 @@
 <!-- jQuery ,bootstrap and any 3rd party script should be compiled into all.js -->
 <script src="{{asset('js/front/all.js')}}"></script>
 <!--this is the file html team has given, don't minify or compile it-->
-<script src="{{asset('js/front/custom.js')}}"></script>
+<script src="{{asset('js/front/custom.min.js')}}"></script>
 <!--DNE-->
 <script src="{{asset('js/public.js')}}"></script>
 <script src="{{asset('js/ycommon.js')}}"></script>
+<script src="{{asset('js/front/bootstrap-notify.min.js')}}"></script>
 <script type="text/javascript">
 (function($){
   $.fn.visible = function(partial){

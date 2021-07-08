@@ -1,7 +1,12 @@
 <?php
 Route::get('/', 'IndexController@index')->name('home');
 Route::get('/contact-us', 'IndexController@contactus')->name('contactus');
+Route::get('/faq', 'IndexController@faq')->name('faq');
+Route::get('/privacy-policy', 'IndexController@parivacypolicy')->name('parivacypolicy');
+Route::get('/terms-and-conditions', 'IndexController@termsandconditions')->name('termsandconditions');
+Route::get('/delivery-and-returns', 'IndexController@deliveryandreturns')->name('deliveryandreturns');
 Route::post('/contact-us-submit', 'IndexController@contactusSubmit')->name('contactusSubmit');
+Route::post('/newsletter-submit', 'IndexController@newsletterSubmit')->name('newsletterSubmit');
 
 Auth::routes();
 Route::get('/backoffice', function(){

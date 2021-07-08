@@ -1,11 +1,14 @@
 <?php
 namespace App\Http\Controllers;
+
+use App\Helpers\Helper as HelpersHelper;
 use Helper;
 use View;
 use Illuminate\Support\Str;
 use App\Http\Requests\yTableinquiryRequest;
-use App\Http\Requests\yTablecareerRequest;
+use App\Http\Requests\yTablenewslettersRequest;
 use App\Model\inquiry;
+use App\Model\newsletters;
 use App\Model\m_flag;
 
 class IndexController extends Controller
@@ -36,15 +39,37 @@ class IndexController extends Controller
     {
         return view('contactus')->with('title','Contact us')->with('contactmenu',true);
     }
+    public function faq()
+    {
+        $categories=Helper::returnMod('m_flag')
+        ->with('faqs')->where('flag_type','FAQCATEGORY')->get();
+        return view('faq')->with('title','Faqs')->with('faqmenu',true)
+        ->with(compact('categories'));
+    }
+    public function parivacypolicy()
+    {
+        return view('parivacy-policy')->with('title','Privacy Policy');
+    }
+    public function termsandconditions()
+    {
+        return view('terms-and-conditions')->with('title','Terms & Conditions');
+    }
+    public function deliveryandreturns()
+    {
+        return view('deliveryandreturns')->with('title','Delivery & Returns');
+    }    
     public function contactusSubmit(yTableinquiryRequest $request){
         $validator = $request->validated();
         $inquiry = new inquiry;
         $inquiry->inquiries_name = $request->inquiries_name;
         $inquiry->inquiries_lname = $request->inquiries_lname;
         $inquiry->inquiries_email = $request->inquiries_email;
-        $inquiry->inquiries_phone = $request->inquiries_phone;
         $inquiry->extra_content = $request->extra_content;
         $inquiry->save();
         $this->echoSuccess("Inquiry Saved");
+    }
+    public function newsletterSubmit(yTablenewslettersRequest $request){
+        newsletters::create(['email'=>$request->email]);
+        return back()->with('notify_success','Newsletter saved');
     }
 }

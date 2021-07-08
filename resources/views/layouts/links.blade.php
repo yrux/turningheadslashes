@@ -1,7 +1,7 @@
 <!--compiled version of bootstrap , slick , animated etc, make sure to use the sort html team have used-->
 <link rel="stylesheet" href="{{ asset('css/all.css') }}">
 <!--style.css uncompiled so that when html team has to work , they can work without any issues-->
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/custom.min.css') }}">
 <!--DNE-->
 <style>
 *[contenteditable]:focus {

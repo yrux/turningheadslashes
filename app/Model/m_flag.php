@@ -12,6 +12,9 @@ class m_flag extends Model
     {
         return $this->morphOne('App\Model\Image', 'imageable')->where('table_name', 'm_flag_main');
     }
+    public function faqs(){
+        return $this->hasMany('App\Model\faqs','category_id','id');
+    }
     // public function m_flag_thumb()
     // {
     //     return $this->morphOne('App\Model\Image', 'imageable')->where('table_name', 'm_flag_thumb');

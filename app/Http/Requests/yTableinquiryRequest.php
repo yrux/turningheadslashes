@@ -24,7 +24,6 @@ class yTableinquiryRequest extends FormRequest
     public function rules()
     {
         return [
-            'inquiries_phone'=>'required|max:255',
             'inquiries_email'=>'required|email',
             'inquiries_name'=>'required|max:255',
             'inquiries_lname'=>'required|max:255',

@@ -56,9 +56,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:100'],
+            'lname' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'agree'=>['required']
         ]);
     }
     public function register(Request $request)
@@ -71,9 +73,9 @@ class RegisterController extends Controller
                 ->withErrors($validator, 'register');
         }
         if($this->create($_POST)){
-            return redirect()->route('home')->with('notify_success',"Registration successfull");
+            return redirect()->route('login')->with('notify_success',"Registration successfull");
         } else {
-            return redirect()->route('home')->with('notify_error',"Some error occured");
+            return redirect()->route('login')->with('notify_error',"Some error occured");
         }
         // rest of the register method code here...
     }
@@ -87,8 +89,11 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'lname'=>$data['lname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'is_deleted'=>0,
+            'is_active'=>1,
         ]);
     }
 }
