@@ -13,7 +13,7 @@
         <div class="col-md-2">
           <ul>
             <li><a href="{{route('login')}}"><img src="{{asset('images/login-icon.png')}}" alt=""></a></li>
-            <li><a href="cart.html"><img src="{{asset('images/cart-icon.png')}}" alt=""></a></li>
+            <li><a href="{{route('ecommerce.product.cart')}}"><img src="{{asset('images/cart-icon.png')}}" alt=""></a></li>
           </ul>
         </div>
 
@@ -49,14 +49,13 @@
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li><a href="{{route('home')}}">Home</a></li>
-                <li><a href="">Products</a></li>
-                <li><a href="">Accessories</a></li>
-                <li><a href="">Brand Apparel</a></li>
-                <li><a href="">Packs</a></li>
-                <li><a href="">Cbd Products</a></li>
-                <li><a href="">Cosmetics</a></li>
-                <li><a href="">misc</a></li>
-                <li><a href="">lash supply</a></li>
+                <li><a href="{{route('ecommerce.products')}}">Products</a></li>
+                <?php
+                $headerCategories = Helper::returnMod('category')->where('show_in_menu', 1)->orderBy('id', 'asc')->get();
+                ?>
+                @foreach($headerCategories as $headerCategory)
+                <li><a href="{{route('ecommerce.products',[$headerCategory])}}">{{$headerCategory->name}}</a></li>
+                @endforeach
                 <li><a href="{{route('contactus')}}">Contact Us</a></li>
               </ul>
               </li>

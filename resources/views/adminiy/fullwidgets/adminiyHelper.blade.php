@@ -519,7 +519,7 @@ var createImageArea = async ({name,column,_table},value,imagesdata)=>{
 		}
 	}else{
 		value=null;
-		_src='http://www.placehold.it/200x150/EFEFEF/AAAAAA?text=no+image';
+		_src='https://via.placeholder.com/250x150';
 	}
 	if(currentFormMode=='view'){
 		_hasImage=false;

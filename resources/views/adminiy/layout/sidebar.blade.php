@@ -28,20 +28,17 @@
                         <li class="{{isset($faqs_ytmenu)?'navigation__active':''}}"><a href="{{url('adminiy/listing/faqs-listing')}}"><i class="zmdi zmdi-8tracks zmdi-hc-fw"></i> Faqs</a></li>
                         <!--Example for sub menus -->
                         <!--product management-->
-                        <!-- <?php 
-                            $underMenuActive=array('products_ytmenu'); 
+                        <?php 
+                            $underMenuActive=array('category_ytmenu','products_ytmenu'); 
                             $currentMenu=isset($menuArray)?$menuArray[0]:'';
                         ?>
-                        <li class="navigation__sub {{in_array($currentMenu,$underMenuActive)?'navigation__sub--active navigation__sub--toggled flag_here':''}}">
-                            <a href="javascript:void(0)"><i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i><span data-toggle="tooltip" title="From here you can manage all of your pizza,sides,dealse etc">Manage Products</span></a>
+                        <li class="navigation__sub {{in_array($currentMenu,$underMenuActive)?'navigation__sub--active navigation__sub--toggled':''}}">
+                            <a href="javascript:void(0)"><i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i><span data-toggle="tooltip" title="From here you can manage all of your ecommerce modules">Manage Ecommerce</span></a>
                             <ul>
-                                <li class="pizza_product"><a href="{{url('adminiy/listing/products-listing#product_type=pizza')}}">Pizza</a></li>
-                                <li class="sides_product"><a href="{{url('adminiy/listing/products-listing#product_type=sides')}}">Sides</a></li>
-                                <li class="desserts_product"><a href="{{url('adminiy/listing/products-listing#product_type=desserts')}}">Desserts</a></li>
-                                <li class="drinks_product"><a href="{{url('adminiy/listing/products-listing#product_type=drinks')}}">Drinks</a></li>
-                                <li class="deals_product"><a href="{{url('adminiy/listing/products-listing#product_type=deals')}}">Deals</a></li>
+                                <li class="{{isset($category_ytmenu)?'navigation__active':''}}"><a href="{{url('adminiy/listing/category-listing')}}">Category</a></li>
+                                <li class="{{isset($products_ytmenu)?'navigation__active':''}}"><a href="{{url('adminiy/listing/products-listing')}}">Products</a></li>
                             </ul>
-                        </li> -->
+                        </li>
                         <!--product management end-->
                         <?php 
                             $underMenuActive=array('m_flag_ytmenu'); 

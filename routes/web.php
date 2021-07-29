@@ -8,6 +8,12 @@ Route::get('/delivery-and-returns', 'IndexController@deliveryandreturns')->name(
 Route::post('/contact-us-submit', 'IndexController@contactusSubmit')->name('contactusSubmit');
 Route::post('/newsletter-submit', 'IndexController@newsletterSubmit')->name('newsletterSubmit');
 
+Route::get('/products/{category?}', 'ProductController@index')->name('ecommerce.products');
+Route::get('/detail/{product}', 'ProductController@detail')->name('ecommerce.product.detail');
+Route::post('/cart/add', 'CartController@add')->name('ecommerce.product.addcart');
+Route::get('/cart/{id}', 'CartController@remove')->name('ecommerce.cart.remove');
+Route::get('/cart', 'CartController@index')->name('ecommerce.product.cart');
+
 Auth::routes();
 Route::get('/backoffice', function(){
 	return redirect('adminiy');
