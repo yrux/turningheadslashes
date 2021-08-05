@@ -13,6 +13,8 @@ Route::get('/detail/{product}', 'ProductController@detail')->name('ecommerce.pro
 Route::post('/cart/add', 'CartController@add')->name('ecommerce.product.addcart');
 Route::get('/cart/{id}', 'CartController@remove')->name('ecommerce.cart.remove');
 Route::get('/cart', 'CartController@index')->name('ecommerce.product.cart');
+Route::post('/cart/applycoupon', 'CartController@applycoupon')->name('ecommerce.cart.applycoupon');
+Route::get('/checkout', 'CartController@checkout')->name('ecommerce.product.checkout');
 
 Auth::routes();
 Route::get('/backoffice', function(){

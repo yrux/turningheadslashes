@@ -8,6 +8,7 @@ use Session;
 use App\Http\Controllers\Controller;
 use App\Model\category;
 use App\Model\products;
+use App\Model\coupons;
 use App\Model\imagetable;
 class CartController extends Controller
 {
@@ -32,9 +33,29 @@ class CartController extends Controller
         Session::put('cart',$cart);
         $this->echoSuccess("Product added in cart");
     }
+    public function applycoupon(Request $request){
+        $data=coupons::where('coupon_code',$request->code)->where('is_active',1)->first();
+        if($data){
+            Session::put('discount_applied',$data->discount_value);
+            Session::put('discount_code',$data->coupon_code);
+            Session::put('discount_enabled',true);
+            return back()->with('notify_success','Coupon applied');
+        }
+        Session::forget('discount_applied');
+        Session::forget('discount_code');
+        Session::forget('discount_enabled');
+        return back()->with('notify_error','Coupon code invalid');
+    }
     public function index(){
         if(Session::has('cart')){
-            return view('ecommerce.cart')->with('cart',Session::get('cart'))->with('title','Cart');
+            $discountEnabled = false;
+            $discountValue = 0;
+            if(Session::has('discount_enabled')){
+                $discountEnabled=true;
+                $discountValue = Session::get('discount_applied');
+            }
+            return view('ecommerce.cart')->with('cart',Session::get('cart'))->with('title','Cart')
+            ->with(compact('discountValue','discountEnabled'));
         }
         return redirect()->route('ecommerce.products')->with('notify_error','No products in cart');
     }
@@ -46,4 +67,18 @@ class CartController extends Controller
         Session::put('cart',$cart);
         return back()->with('notify_success','Product removed from cart');
     }
+    public function checkout(){
+        if(Session::has('cart')){
+            $discountEnabled = false;
+            $discountValue = 0;
+            if(Session::has('discount_enabled')){
+                $discountEnabled=true;
+                $discountValue = Session::get('discount_applied');
+            }
+            return view('ecommerce.checkout')->with('cart',Session::get('cart'))->with('title','Checkout')
+            ->with(compact('discountValue','discountEnabled'));
+        }
+        return redirect()->route('ecommerce.products')->with('notify_error','No products in cart');
+    }
 }
+

@@ -36,7 +36,11 @@
                 <span class="like"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                 <h5>{{$product->name}}</h5>
                 <img src="{{asset($product->image->url)}}" alt="">
-                <h6>${{$product->price}}</h6>
+                @if($product->discount>0)
+                <h6>${{Helper::discountedValue($product->price, $product->discount)}}</h6>
+                @else
+                <h6>${{Helper::discountedValue($product->price, 0)}}</h6>
+                @endif
                 <ul>
                     <li><span class="color1">1</span></li>
                     <li><span class="color2">2</span></li>

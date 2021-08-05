@@ -29,7 +29,7 @@
                         <!--Example for sub menus -->
                         <!--product management-->
                         <?php 
-                            $underMenuActive=array('category_ytmenu','products_ytmenu'); 
+                            $underMenuActive=array('category_ytmenu', 'products_ytmenu', 'coupons_ytmenu'); 
                             $currentMenu=isset($menuArray)?$menuArray[0]:'';
                         ?>
                         <li class="navigation__sub {{in_array($currentMenu,$underMenuActive)?'navigation__sub--active navigation__sub--toggled':''}}">
@@ -37,6 +37,7 @@
                             <ul>
                                 <li class="{{isset($category_ytmenu)?'navigation__active':''}}"><a href="{{url('adminiy/listing/category-listing')}}">Category</a></li>
                                 <li class="{{isset($products_ytmenu)?'navigation__active':''}}"><a href="{{url('adminiy/listing/products-listing')}}">Products</a></li>
+                                <li class="{{isset($coupons_ytmenu)?'navigation__active':''}}"><a href="{{url('adminiy/listing/coupons-listing')}}">Coupons</a></li>
                             </ul>
                         </li>
                         <!--product management end-->

@@ -636,6 +636,15 @@ public static function getPaginator($pageLimit=20){
     $model_name = 'App\Model\\'.$modelname;
     return $model_name::where('is_active',1)->where('is_deleted',0);
   }
+  public static function discountedValue ($amount, $discount, $format=false) {
+    if($discount>0){
+      $amount = ($amount-(($amount/100) * $discount));
+    }
+    if($format===true){
+      return number_format($amount, 2,'.',',');
+    }
+    return $amount;
+  }
   // public static function getImageWithRowDC($table,$col,$id,$where=''){
   //     $add = '';
   //     if($where!=''){

@@ -21,9 +21,9 @@
                                             <td width="15%" class="text-center"><img src="images/product-detail-img-01.jpg"></td>
                                             <td>
                                                 <div class="rank">
-                                                    <ul>
+                                                    <!-- <ul>
                                                         <li> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> </li>
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                                 <div class="detail-heading">
                                                     <h2>{{$car['product']->name}}</h2>
@@ -31,20 +31,27 @@
                                                 </div>
                                             </td>
                                             <td class="text-left discount-sec ">
-                                                <span class="cart-price">${{$car['product']->price}}</span>
+                                                @if($car['product']->discount>0)
+                                                <span class="cart-price">${{Helper::discountedValue($car['product']->price, $car['product']->discount,true)}}</span>
+                                                @else
+                                                <span class="cart-price">${{Helper::discountedValue($car['product']->price, 0,true)}}</span>
+                                                @endif
                                                 @if($car['product']->discount>0)
                                                 <div class="detail-heading t">
                                                     <h4>Special Discount {{$car['product']->discount}}%</h4>
                                                 </div>
                                                 @endif
                                             </td>
-                                            <td class="number-sec-count"><input type="number" value="{{$car['qty']}}"></td>
+                                            <td class="number-sec-count"><input disabled data-pid="{{$cark}}" type="number" value="{{$car['qty']}}"></td>
                                             <td class="text-center">
-                                                <span class="cart-price">${{$car['total']}}</span>
+                                                <span class="cart-price">${{Helper::discountedValue($car['total'], $car['product']->discount, true)}}</span>
                                                 <div class="cancel_div"><a href="{{route('ecommerce.cart.remove',[$cark])}}"> X</a></div>
                                             </td>
                                         </tr>
-                                        <?php $total+=$car['total']; ?>
+                                        <?php 
+                                        $total+=Helper::discountedValue($car['total'], $car['product']->discount);
+                                        //$total+=$car['total']; 
+                                        ?>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -54,7 +61,7 @@
 
                 <div class="cart-sec-detail">
                     <div class="col-md-4 col-sm-4">
-                        <div class="method-sec">
+                        <!-- <div class="method-sec">
                             <div class="heading-cart-detail">
                                 <h2>Select Payment Method</h2>
                             </div>
@@ -82,7 +89,7 @@
                             <div class="btn-detail">
                                 <a href="#">UPDATE</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="col-md-4 col-sm-4">
@@ -93,12 +100,14 @@
 
                             <div class="total-detail-sec">
                                 <ul>
-                                    <li>Sub Total : ${{$total}}</li>
+                                    <li>Sub Total : ${{Helper::discountedValue($total, 0, true)}}</li>
                                     <li>Shipping Charge : N/A</li>
-                                    <li>Promo Discount : N/A</li>
+                                    @if($discountEnabled===true)
+                                        <li>Promo Discount : {{$discountValue}}%</li>
+                                    @endif
                                 </ul>
 
-                                <h2>ORDER TOTAL <span>${{$total}}</span></h2>
+                                <h2>ORDER TOTAL <span>${{Helper::discountedValue($total, $discountValue, true)}}</span></h2>
                             </div>
                         </div>
                     </div>
@@ -115,7 +124,8 @@
                                     <li>CODE ; <span>00xx123</span></li>
                                 </ul>
 
-                                <form>
+                                <form method="POST" action="{{route('ecommerce.cart.applycoupon')}}">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <input type="text" name="code" class="form-control" placeholder="Enter Code">
@@ -136,7 +146,7 @@
 
                 <div class="process-btn-sec">
                     <div class="btn-detail">
-                        <a href="">PROCED TO CHECKOUT</a>
+                        <a href="{{route('ecommerce.product.checkout')}}">PROCED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>
