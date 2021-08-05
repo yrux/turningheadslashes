@@ -15,6 +15,8 @@ Route::get('/cart/{id}', 'CartController@remove')->name('ecommerce.cart.remove')
 Route::get('/cart', 'CartController@index')->name('ecommerce.product.cart');
 Route::post('/cart/applycoupon', 'CartController@applycoupon')->name('ecommerce.cart.applycoupon');
 Route::get('/checkout', 'CartController@checkout')->name('ecommerce.product.checkout');
+Route::post('/checkout/process-order', 'CartController@createOrder')->name('ecommerce.cart.createOrder');
+
 
 Auth::routes();
 Route::get('/backoffice', function(){

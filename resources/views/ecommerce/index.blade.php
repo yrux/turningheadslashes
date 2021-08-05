@@ -51,6 +51,9 @@
             </div>
             </div>
         @endforeach
+        @if($products->count()==0)
+            <h2 class="text-center">No Products in this category</h2>
+        @endif
       </div>
     </div>
   </section>

@@ -10,6 +10,7 @@ use App\Model\category;
 use App\Model\products;
 use App\Model\coupons;
 use App\Model\imagetable;
+use App\Http\Requests\orderRequest;
 class CartController extends Controller
 {
     public function __construct()
@@ -75,10 +76,18 @@ class CartController extends Controller
                 $discountEnabled=true;
                 $discountValue = Session::get('discount_applied');
             }
+            $countries = Helper::fireQuery("Select * from apps_countries");
             return view('ecommerce.checkout')->with('cart',Session::get('cart'))->with('title','Checkout')
-            ->with(compact('discountValue','discountEnabled'));
+            ->with(compact('discountValue','discountEnabled','countries'));
         }
         return redirect()->route('ecommerce.products')->with('notify_error','No products in cart');
+    }
+    public function createOrder (orderRequest $request) {
+        Session::forget('cart');
+        Session::forget('discount_applied');
+        Session::forget('discount_code');
+        Session::forget('discount_enabled');
+        $this->echoSuccess("Order Recieved");
     }
 }
 

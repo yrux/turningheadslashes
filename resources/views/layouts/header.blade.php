@@ -5,8 +5,8 @@
       <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-6">
-          <form>
-            <input type="" name="" placeholder="Search here ...">
+          <form method="GET" action="{{route('ecommerce.products')}}">
+            <input type="text" name="q" placeholder="Search here ...">
             <button><i class="fa fa-search" aria-hidden="true"></i></button>
           </form>
         </div>

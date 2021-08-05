@@ -22,6 +22,10 @@ class ProductController extends Controller
         if($category->id){
             $products = $products->where('category_id',$category->id);
         }
+        if(!empty($_GET['q'])){
+            $q = $_GET['q'];
+            $products = $products->where('name','like','%'.$q.'%');
+        }
         $products = $products->get();
         return view('ecommerce.index')->with('title',(!$category->name?'Products':$category->name))
         ->with('category',$category)
