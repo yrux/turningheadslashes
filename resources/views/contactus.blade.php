@@ -58,7 +58,7 @@
                   <div class="col-md-9">
                     <div class="contact_text">
                       <h2>Mailing Address:</h2>
-                      <p>8136 S Kedzie Ave Chicago IL 60652</p>
+                      <p>{{$config['ADDRESS']}}</p>
                     </div>
                   </div>
                 </div>
@@ -71,7 +71,7 @@
                   <div class="col-md-9">
                     <div class="contact_text">
                       <h2>Phone</h2>
-                      <p><a class="email-text" href="tel:877 871 3506">877 871 3506</a></p>
+                      <p><a class="email-text" href="tel:{{$config['COMPANYPHONE']}}">{{$config['COMPANYPHONE']}}</a></p>
                     </div>
                   </div>
                 </div>
@@ -84,7 +84,7 @@
                   <div class="col-md-9">
                     <div class="contact_text">
                       <h2>Email At</h2>
-                      <p><a class="email-text" href="mailto:coache@thehealingcenter.guru">coache@thehealingcenter.guru</a></p>
+                      <p><a class="email-text" href="mailto:{{$config['COMPANYEMAIL']}}">{{$config['COMPANYEMAIL']}}</a></p>
                     </div>
                   </div>
                 </div>

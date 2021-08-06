@@ -27,16 +27,21 @@ _default will set a default value for new records
         //     slugof:'field_name',
         //     hiddenInList:true,
         // }
-        // ,{
-        //     column:'field_name',
-        //     name:'Name',
-        //     type:'text',
-        // }
-        // ,{
-        //     column:'field_description',
-        //     name:'Description',
-        //     type:'textarea',
-        // }
+        ,{
+            column:'name',
+            name:'Name',
+            type:'text',
+        }
+        ,{
+            column:'position',
+            name:'Position',
+            type:'text',
+        }
+        ,{
+            column:'comment',
+            name:'Comment',
+            type:'textarea',
+        }
         // ,{
         //     column:'field_description_wyswig',
         //     name:'WYSWIG',
