@@ -10,6 +10,7 @@ use App\Http\Requests\yTablenewslettersRequest;
 use App\Model\inquiry;
 use App\Model\newsletters;
 use App\Model\m_flag;
+use Symfony\Component\Console\Helper\Helper as HelperHelper;
 
 class IndexController extends Controller
 {
@@ -22,22 +23,28 @@ class IndexController extends Controller
     }
     public function index()
     {
-        // $m_flag = m_flag::find(1965);
-        // dd($m_flag->m_flag_main,$m_flag->m_flag_thumb);
-        // $banners = Helper::fireQuery("select banner_management.*
-        //     ,img_1.img_path as img_1_img
-        //     ,img_2.img_path as img_2_img from banner_management 
-        //     left join imagetable as img_1 on img_1.ref_id = banner_management.id and img_1.type=1 and img_1.table_name='banner_management'
-        //     left join imagetable as img_2 on img_2.ref_id = banner_management.id and img_2.type=1 and img_2.table_name='banner_management_thumb'
-        //     where banner_management.is_active=1 and banner_management.is_deleted=0");
-        // $deals = Helper::getImageWithData('products','id','',"is_active=1 and is_deleted=0 and product_type='deals'",0,'order by id asc');
+        $testimonials = Helper::returnMod('testimonials')->orderBy('id','desc')->get();
+        $news = Helper::returnMod('news')->orderBy('id','desc')->limit(2)->get();
+        $totalNews = Helper::returnMod('news')->count();
+        $products = Helper::returnMod('products')->where('is_featured',1)->orderBy('id','desc')->get();
+        $homeProduct = intval(Helper::returnFlag(1965));
+        $homeProductData = [];
+        if(($homeProduct)>0){
+            $homeProductData = Helper::returnMod('products')->where('id',intval($homeProduct))->first();
+        }
         return view('welcome')->with('title',Helper::returnFlag(123))
-        ->with('homeMenu',true);
-        //->with(compact('banners','deals'))
+        ->with('homeMenu',true)
+        ->with(compact('testimonials','news','totalNews','products','homeProductData','homeProduct'));
     }
     public function contactus()
     {
         return view('contactus')->with('title','Contact us')->with('contactmenu',true);
+    }
+    public function news()
+    {
+        $news = Helper::returnMod('news')->orderBy('id','desc')->get();
+        return view('news')->with('title','News')->with('newsmenu',true)
+        ->with(compact('news'));
     }
     public function faq()
     {
