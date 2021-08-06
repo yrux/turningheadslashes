@@ -41,6 +41,18 @@ $(this).attr('src',$(this).data('url'));
 }
 });
 }
+function addToWishList (obj) {
+  var id = $(obj).data('id')
+  @if(Auth::check())
+  ajaxify({
+    id: id
+  },'POST','{{route('customer.ecommerce.add.wishlist')}}').then(function(e){
+    generateNotification(e.status,e.data);
+  })
+  @else
+  generateNotification('0','You need to login first');
+  @endif
+}
 </script>
 @if(is_adminiy())
   <script src="{{asset('admin/vendors/ckeditor/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
