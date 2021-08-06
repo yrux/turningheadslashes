@@ -2,6 +2,7 @@
 Route::get('/', 'IndexController@index')->name('home');
 Route::get('/contact-us', 'IndexController@contactus')->name('contactus');
 Route::get('/faq', 'IndexController@faq')->name('faq');
+Route::get('/news', 'IndexController@news')->name('news');
 Route::get('/privacy-policy', 'IndexController@parivacypolicy')->name('parivacypolicy');
 Route::get('/terms-and-conditions', 'IndexController@termsandconditions')->name('termsandconditions');
 Route::get('/delivery-and-returns', 'IndexController@deliveryandreturns')->name('deliveryandreturns');
@@ -146,4 +147,7 @@ Route::group(['middleware' => ['customer'],'prefix'=>'customer','namespace'=>'Cu
 	/*change password customer end*/
 	Route::get('/panel', 'IndexController@index')->name('customer.panel');
 	Route::get('/logout', 'IndexController@logout')->name('customer.logout');
+
+	/*ecommerce*/
+	Route::post('/add/wishlist', 'WishlistController@add')->name('customer.ecommerce.add.wishlist');
 });
