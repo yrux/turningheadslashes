@@ -26,6 +26,8 @@
                         <li class="{{isset($inquiry_ytmenu)?'navigation__active':''}}"><a href="{{url('adminiy/listing/inquiry-listing#type=1')}}"><i class="zmdi zmdi-plus zmdi-hc-fw"></i> Contact Inquiry</a></li>
                         <li class="{{isset($newsletters_ytmenu)?'navigation__active':''}}"><a href="{{url('adminiy/listing/newsletters-listing')}}"><i class="zmdi zmdi-email-open zmdi-hc-fw"></i> Newsletters</a></li>
                         <li class="{{isset($faqs_ytmenu)?'navigation__active':''}}"><a href="{{url('adminiy/listing/faqs-listing')}}"><i class="zmdi zmdi-8tracks zmdi-hc-fw"></i> Faqs</a></li>
+                        <li class="{{isset($testimonials_ytmenu)?'navigation__active':''}}"><a href="{{url('adminiy/listing/testimonials-listing')}}"><i class="zmdi zmdi-satellite zmdi-hc-fw"></i> Testimonials</a></li>
+                        <li class="{{isset($news_ytmenu)?'navigation__active':''}}"><a href="{{url('adminiy/listing/news-listing')}}"><i class="zmdi zmdi-blogger zmdi-hc-fw"></i> News</a></li>
                         <!--Example for sub menus -->
                         <!--product management-->
                         <?php 

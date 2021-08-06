@@ -1,4 +1,4 @@
-const tablename='testimonials';const ydebugger=false; var ytabled;
+const tablename='news';const ydebugger=false; var ytabled;
  //var _imageCol = tablename+'_image';
 /*When you want to use FAST CRUD of ytable and you have used joins in the listing use 
 type:'ignore' 
@@ -20,33 +20,30 @@ _default will set a default value for new records
             name:'ID',
             type:'hidden',
         }
-        // ,{
-        //     column:'field_slug',
-        //     name:'Slug',
-        //     type:'slug',
-        //     slugof:'field_name',
-        //     hiddenInList:true,
-        // }
         ,{
-            column:'name',
-            name:'Name',
+            column:'title',
+            name:'Title',
             type:'text',
         }
         ,{
-            column:'position',
-            name:'Position',
-            type:'text',
+            column:'slug',
+            name:'Slug',
+            type:'slug',
+            slugof:'title',
+            hiddenInList:true,
         }
         ,{
-            column:'comment',
-            name:'Comment',
+            column:'short_description',
+            name:'Short Description',
             type:'textarea',
+            hiddenInList:true,
         }
-        // ,{
-        //     column:'field_description_wyswig',
-        //     name:'WYSWIG',
-        //     type:'wyswig',
-        // }
+        ,{
+            column:'description',
+            name:'Description',
+            type:'wyswig',
+            hiddenInList:true,
+        }
         // ,{
         //     column:'field_type',
         //     name:'Type',
@@ -107,13 +104,13 @@ _default will set a default value for new records
         //     hiddenInList:true,
         //     _table:`${tablename}_optional`,
         // }
-        ,{
-            column:'id',
-            name:'Image',
-            type:'image',
-            hiddenInList:true,
-            _table:tablename,
-        }
+        // ,{
+        //     column:'id',
+        //     name:'Image',
+        //     type:'image',
+        //     hiddenInList:true,
+        //     _table:tablename,
+        // }
         // ,{
         //     column:'table_thumb_image',
         //     name:'Thumb',

@@ -1,4 +1,4 @@
-const tablename='testimonials';const ydebugger=false; var ytabled;
+const tablename='wishlists';const ydebugger=false; var ytabled;
  //var _imageCol = tablename+'_image';
 /*When you want to use FAST CRUD of ytable and you have used joins in the listing use 
 type:'ignore' 
@@ -27,21 +27,16 @@ _default will set a default value for new records
         //     slugof:'field_name',
         //     hiddenInList:true,
         // }
-        ,{
-            column:'name',
-            name:'Name',
-            type:'text',
-        }
-        ,{
-            column:'position',
-            name:'Position',
-            type:'text',
-        }
-        ,{
-            column:'comment',
-            name:'Comment',
-            type:'textarea',
-        }
+        // ,{
+        //     column:'field_name',
+        //     name:'Name',
+        //     type:'text',
+        // }
+        // ,{
+        //     column:'field_description',
+        //     name:'Description',
+        //     type:'textarea',
+        // }
         // ,{
         //     column:'field_description_wyswig',
         //     name:'WYSWIG',

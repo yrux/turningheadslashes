@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class yTabletestimonialsRequest extends FormRequest
+class yTablewishlistsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class yTabletestimonialsRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,9 +24,7 @@ class yTabletestimonialsRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|max:255',
-            'position'=>'required|max:100',
-            'comment'=>'required|max:555',
+            //
         ];
     }
 }

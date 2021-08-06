@@ -76,29 +76,10 @@
       <div class="new-arrv-title">
         <h3>Related Products</h3>
       </div>
-
       <div class="row">
         @foreach($related_products as $related_product)
-        <div class="col-md-4">
-            <div class="new-arrv-blk">
-                @if($related_product->discount>0)
-                <div class="off-sell"><p>{{$related_product->discount}}% off</p></div>
-                @endif
-                <span class="like"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                <h5>{{$related_product->name}}</h5>
-                <img src="{{asset($related_product->image->url)}}" alt="">
-                <h6>${{$related_product->price}}</h6>
-                <ul>
-                    <li><span class="color1">1</span></li>
-                    <li><span class="color2">2</span></li>
-                    <li><span class="color3">3</span></li>
-                    <li><span class="color4">4</span></li>
-                </ul>
-                <a href="{{route('ecommerce.product.detail',[$related_product])}}"><img src="{{asset('images/btn-icon.png')}}" alt="">Add to cart</a>
-            </div>
-            </div>
+          @include('extends.product_card',['product'=>$related_product])
         @endforeach
-
       </div>
     </div>
   </section>

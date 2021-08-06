@@ -18,4 +18,7 @@ class products extends Model
     public function category(){
         return $this->hasOne(category::class,'id','category_id');
     }
+    public function optionalimages () {
+        return $this->hasMany('App\Model\imagetable','ref_id','id')->where('table_name','products_optional')->where('type',2);
+    }
 }

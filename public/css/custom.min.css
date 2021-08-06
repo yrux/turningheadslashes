@@ -442,6 +442,10 @@
    .news-blk p {
        float: left;
    }
+   .news-blk p.det_short{
+        display: block;
+        width: 100%;
+   }
    .news-blk {
        float: left;
        margin-top: 25px;
