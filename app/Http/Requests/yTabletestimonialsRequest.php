@@ -13,7 +13,7 @@ class yTabletestimonialsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class yTabletestimonialsRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required|max:255',
+            'position'=>'required|max:100',
+            'comment'=>'required|max:555',
         ];
     }
 }

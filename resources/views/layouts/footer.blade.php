@@ -17,8 +17,8 @@
 
 			<div class="col-md-5">
 				<div class="ftr-form">
-					<h4>Subscribe</h4>
-					<p>Join the Our community and keep up to date with exclusive offers, blog content, behind the scenes &amp; more.</p>
+				<?php Helper::inlineEditable("h4", "", 'Subscribe', 'FOOTER'); ?>
+				<?php Helper::inlineEditable("p", "", 'Join the Our community and keep up to date with exclusive offers, blog content, behind the scenes &amp; more.', 'FOOTER'); ?>
 					
 					<form method="POST" action="{{route('newsletterSubmit')}}">
 						@csrf
